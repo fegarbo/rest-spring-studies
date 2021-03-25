@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.garbo.converter.DozerConverter;
 import br.com.garbo.data.model.Person;
-import br.com.garbo.data.vo.PersonVO;
+import br.com.garbo.data.vo.v1.PersonVO;
 import br.com.garbo.exception.ResourceNotFoundException;
 import br.com.garbo.repository.PersonRepository;
 

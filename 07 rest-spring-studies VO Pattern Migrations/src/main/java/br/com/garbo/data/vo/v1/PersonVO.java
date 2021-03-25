@@ -1,15 +1,25 @@
-package br.com.garbo.data.vo;
+package br.com.garbo.data.vo.v1;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"id","address","first_name","last_name","gender"})  //Para alterar a ordem no retorno do json
 public class PersonVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@JsonProperty("first_name") //Para alterar o nome de exibição no json de retorno
 	private String firstName;
-	private String LastName;
+	
+	@JsonProperty("last_name")
+	private String lastName;
 	private String address;
+	
+	//@JsonIgnore //Não apresenta o campo no json de retorno
 	private String gender;
 	
 	public PersonVO () {		
@@ -32,11 +42,11 @@ public class PersonVO implements Serializable {
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getAddress() {
@@ -47,7 +57,7 @@ public class PersonVO implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((LastName == null) ? 0 : LastName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
@@ -64,10 +74,10 @@ public class PersonVO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PersonVO other = (PersonVO) obj;
-		if (LastName == null) {
-			if (other.LastName != null)
+		if (lastName == null) {
+			if (other.lastName != null)
 				return false;
-		} else if (!LastName.equals(other.LastName))
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		if (address == null) {
 			if (other.address != null)

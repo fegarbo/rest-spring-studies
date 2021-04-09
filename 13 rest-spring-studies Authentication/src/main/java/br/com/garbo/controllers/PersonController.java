@@ -21,8 +21,6 @@ import br.com.garbo.services.PersonServices;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-//@Api(value = "Person Endpoint", description = "Description for person", tags = {"PersonEndpoint"}) //description is deprecated
-//@CrossOrigin //Allow access for all controller
 @Api(tags = {"PersonEndpoint"})
 @RestController
 @RequestMapping("/api/person/v1")
@@ -31,7 +29,6 @@ public class PersonController {
 	@Autowired
 	private PersonServices services;
 	
-	//@CrossOrigin(origins= {"http://localhost:8080"}) //allowed only by local calls. I can specify more than one like: {"http://localhost:8080", "https://www.google.com"}
 	@ApiOperation(value = "Find all persons recorded")
 	@GetMapping(produces = { "application/json", "application/xml", "application/x-yaml" })
 	public List<PersonVO> findAll() {		

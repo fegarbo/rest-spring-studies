@@ -4,13 +4,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-@EnableAutoConfiguration //Permitir que o application content do spring seja automaticamente carregado com os jars e configurações definidas. É feito após o carregamento dos Beans
-@ComponentScan //Para scanear os pacotes e encontrar arquivos de configuração(como o webconfig)
+@EnableAutoConfiguration
+@ComponentScan
 public class Startup {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Startup.class, args);
+		
+		/*BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(16);		
+		String result = bCryptPasswordEncoder.encode("admin123");
+		System.out.println("My hash " + result);*/
 	}
 }

@@ -12,17 +12,17 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-@Table(name ="permission")
-public class Permission implements GrantedAuthority, Serializable{
+@Table(name = "permission")
+public class Permission implements GrantedAuthority, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name ="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name ="description")
+	@Column(name = "description")
 	private String description;
 	
 	@Override

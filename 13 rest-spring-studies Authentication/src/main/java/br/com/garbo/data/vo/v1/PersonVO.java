@@ -21,7 +21,7 @@ public class PersonVO extends ResourceSupport implements Serializable {
 	private String address;
 	private String gender;
 	
-	public PersonVO () {		
+	public PersonVO() {
 	}
 
 	public Long getKey() {
@@ -111,5 +111,5 @@ public class PersonVO extends ResourceSupport implements Serializable {
 		} else if (!lastName.equals(other.lastName))
 			return false;
 		return true;
-	}	
+	}
 }

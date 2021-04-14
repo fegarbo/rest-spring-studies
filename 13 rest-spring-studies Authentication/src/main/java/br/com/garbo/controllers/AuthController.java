@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.garbo.repository.UserRepository;
 import br.com.garbo.security.AccountCredentialsVO;
 import br.com.garbo.security.jwt.JwtTokenProvider;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@Api(tags = "AuthenticationEndpoint") 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -35,15 +37,16 @@ public class AuthController {
 	@Autowired
 	UserRepository repository;
 	
-	@ApiOperation(value = "Authenticate a user by credentials")	
-	@PostMapping(value = "/signin", produces = { "application/json", "application/xml", "application/x-yaml" },
-	    	 	 consumes = { "application/json", "application/xml", "application/x-yaml" })
+	@ApiOperation(value = "Authenticates a user and returns a token")
+	@SuppressWarnings("rawtypes")
+	@PostMapping(value = "/signin", produces = { "application/json", "application/xml", "application/x-yaml" }, 
+			consumes = { "application/json", "application/xml", "application/x-yaml" })
 	public ResponseEntity signin(@RequestBody AccountCredentialsVO data) {
 		try {
-			var username = data.getUserName();
+			var username = data.getUsername();
 			var password = data.getPassword();			
 			var token = "" ;
-			var user = repository.findByUserName(username);
+			var user = repository.findByUsername(username);
 			
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));	
 			
